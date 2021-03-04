@@ -6,13 +6,34 @@ let list = document.getElementById('list')
 let numberList = []
 
 
+function isNumber (num) {
+  if (Number(num) >= 0 && Number(num) <= 100) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function inList (num, list) {
+  if(list.indexOf(Number(num)) != -1){
+    return true
+  } else {
+    return false
+  }
+}
+
 function add () {
   let numb = Number(number.value)
-  let item = document.createElement('option')
-  item.text = `valor ${numb} adicionado.`
-  list.appendChild(item)
-  numberList.push(numb)
-  console.log(numberList)
+  if (isNumber(numb) && !inList(numb, numberList)){
+    let numb = Number(number.value)
+    let item = document.createElement('option')
+    item.text = `valor ${numb} adicionado.`
+    list.appendChild(item)
+    numberList.push(numb)
+    console.log(numberList)
+  } else {
+    alert('Valor inválido ou já encontrado na lista.')
+  }
 }
 
 function analise(){
